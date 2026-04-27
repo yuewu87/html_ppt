@@ -5,23 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>互联网不是法外之地 —— 自媒体规范与网络空间治理</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js">
+    </script>
     <style>
         :root {
-            --bg: #f5f7fc;
+            --bg: #f3f5f9;
             --card-bg: #ffffff;
+            --card-border: #e2e8f0;
             --text: #1a1a2e;
             --text-secondary: #4a4a6a;
             --accent: #3b6df0;
-            --accent-light: #e8eeff;
-            --glow-1: rgba(59, 109, 240, 0.25);
-            --glow-2: rgba(99, 140, 255, 0.18);
-            --glow-3: rgba(130, 100, 240, 0.15);
-            --border: #e0e6f0;
-            --tag-bg: #eef3ff;
-            --shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
-            --shadow-hover: 0 20px 60px rgba(59, 109, 240, 0.12);
+            --accent2: #0ea5e9;
+            --accent-glow: rgba(59, 109, 240, 0.18);
+            --rose: #e53e3e;
+            --teal: #0d9488;
+            --purple: #7c3aed;
+            --blue: #3b82f6;
+            --orange: #f59e0b;
             --radius: 20px;
             --transition: 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+            --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 16px 48px rgba(59, 109, 240, 0.1);
         }
 
         * {
@@ -47,52 +51,54 @@
             inset: 0;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.7;
+            opacity: 0.55;
         }
 
+        /* ===== 装饰光球 ===== */
         .glow-bg {
             position: fixed;
             inset: 0;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
+            opacity: 0.7;
         }
 
         .glow-orb {
             position: absolute;
             border-radius: 50%;
-            filter: blur(90px);
-            animation: floatOrb 12s ease-in-out infinite;
-            opacity: 0.55;
+            filter: blur(110px);
+            animation: floatOrb 14s ease-in-out infinite;
+            opacity: 0.35;
         }
 
         .glow-orb:nth-child(1) {
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(59, 109, 240, 0.35) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(59, 109, 240, 0.16) 0%, transparent 70%);
             top: -10%;
             left: -8%;
             animation-delay: 0s;
-            animation-duration: 14s;
+            animation-duration: 15s;
         }
 
         .glow-orb:nth-child(2) {
             width: 420px;
             height: 420px;
-            background: radial-gradient(circle, rgba(99, 140, 255, 0.28) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, transparent 70%);
             top: 55%;
             right: -6%;
-            animation-delay: -4s;
-            animation-duration: 16s;
+            animation-delay: -5s;
+            animation-duration: 17s;
         }
 
         .glow-orb:nth-child(3) {
             width: 350px;
             height: 350px;
-            background: radial-gradient(circle, rgba(130, 100, 240, 0.22) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 70%);
             bottom: -12%;
             left: 30%;
-            animation-delay: -8s;
+            animation-delay: -9s;
             animation-duration: 13s;
         }
 
@@ -104,16 +110,123 @@
             }
 
             25% {
-                transform: translate(40px, -30px) scale(1.08);
+                transform: translate(45px, -35px) scale(1.08);
             }
 
             50% {
-                transform: translate(-20px, 25px) scale(0.94);
+                transform: translate(-25px, 30px) scale(0.93);
             }
 
             75% {
-                transform: translate(-35px, -15px) scale(1.05);
+                transform: translate(-40px, -18px) scale(1.06);
             }
+        }
+
+        /* ===== 装饰几何元素 ===== */
+        .deco-square {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0.06;
+            border-radius: 8px;
+            border: 2px solid;
+            transform: rotate(45deg);
+            z-index: 0;
+        }
+
+        /* ===== Lucide 图标尺寸工具类 ===== */
+        .lc {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+
+        .lc-56 svg {
+            width: 56px;
+            height: 56px;
+        }
+
+        .lc-48 svg {
+            width: 48px;
+            height: 48px;
+        }
+
+        .lc-40 svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .lc-36 svg {
+            width: 36px;
+            height: 36px;
+        }
+
+        .lc-32 svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .lc-28 svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .lc-24 svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .lc-22 svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .lc-20 svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .lc-18 svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* ===== 颜色工具类 ===== */
+        .c-accent {
+            color: var(--accent);
+        }
+
+        .c-rose {
+            color: var(--rose);
+        }
+
+        .c-teal {
+            color: var(--teal);
+        }
+
+        .c-purple {
+            color: var(--purple);
+        }
+
+        .c-blue {
+            color: var(--blue);
+        }
+
+        .c-orange {
+            color: var(--orange);
+        }
+
+        .c-accent2 {
+            color: var(--accent2);
+        }
+
+        .c-gray {
+            color: var(--text-secondary);
+        }
+
+        .c-white {
+            color: #fff;
         }
 
         /* ===== 封面打字效果 ===== */
@@ -129,6 +242,7 @@
             }
         }
 
+        /* ===== 幻灯片容器 ===== */
         .slides-wrapper {
             position: relative;
             z-index: 1;
@@ -152,38 +266,38 @@
             align-items: center;
             justify-content: center;
             padding: 30px 40px;
+            position: relative;
         }
 
+        /* ===== 卡片 ===== */
         .card {
             background: var(--card-bg);
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            border: 1px solid var(--border);
+            border: 1px solid var(--card-border);
             width: 100%;
             max-width: 1200px;
             max-height: 90vh;
-            padding: 48px 52px 40px;
+            padding: 44px 48px 38px;
             display: flex;
             flex-direction: column;
             gap: 22px;
             position: relative;
             overflow-y: auto;
             transition: var(--transition);
-            /* 入场动画延迟由JS控制 */
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
+            transform: translateY(35px);
         }
 
-        /* 悬停发光增强 */
         .card:hover {
-            box-shadow: var(--shadow-hover), 0 0 60px 5px var(--glow-1);
+            box-shadow: var(--shadow-hover), 0 0 60px 4px rgba(59, 109, 240, 0.08);
             border-color: var(--accent);
         }
 
         .card.visible {
             opacity: 1;
             transform: translateY(0);
+            transition: opacity 0.65s ease-out, transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
         }
 
         .card::-webkit-scrollbar {
@@ -195,6 +309,7 @@
             border-radius: 4px;
         }
 
+        /* 卡片顶部发光装饰线 */
         .card::before {
             content: '';
             position: absolute;
@@ -203,7 +318,7 @@
             right: 40px;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
         .card::after {
@@ -215,7 +330,7 @@
             height: 2px;
             background: var(--accent);
             border-radius: 0 0 2px 2px;
-            box-shadow: 0 0 18px 2px var(--glow-1), 0 0 40px 4px var(--glow-2);
+            box-shadow: 0 0 18px 2px rgba(59, 109, 240, 0.2), 0 0 40px 4px rgba(59, 109, 240, 0.1);
             animation: glowLine 3.5s ease-in-out infinite;
         }
 
@@ -223,7 +338,7 @@
 
             0%,
             100% {
-                opacity: 0.55;
+                opacity: 0.5;
                 left: 43%;
                 right: 43%;
             }
@@ -238,7 +353,7 @@
         .card-title {
             font-size: 28px;
             font-weight: 700;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.03em;
             color: var(--text);
             display: flex;
             align-items: center;
@@ -246,22 +361,21 @@
             flex-shrink: 0;
         }
 
-        .card-title .icon {
+        .card-title .icon-badge {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 42px;
-            height: 42px;
+            width: 46px;
+            height: 46px;
             border-radius: 12px;
-            background: var(--accent-light);
-            font-size: 20px;
+            background: #eef3ff;
             flex-shrink: 0;
             transition: all 0.3s ease;
         }
 
-        .card-title .icon:hover {
+        .card-title .icon-badge:hover {
             transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 0 15px var(--glow-1);
+            box-shadow: 0 0 16px rgba(59, 109, 240, 0.15);
         }
 
         .card-body {
@@ -269,8 +383,8 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-            line-height: 1.75;
-            font-size: 15.5px;
+            line-height: 1.8;
+            font-size: 17px;
             color: var(--text-secondary);
         }
 
@@ -280,58 +394,91 @@
 
         .card-body .highlight {
             color: var(--accent);
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .card-body strong {
             color: var(--text);
+            font-weight: 700;
         }
 
+        /* ===== 标签 ===== */
         .tag {
             display: inline-block;
-            background: var(--tag-bg);
+            background: #eef3ff;
             color: var(--accent);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
             margin: 2px 4px;
             letter-spacing: 0.03em;
             transition: all 0.3s ease;
+            border: 1px solid #d6e0f8;
         }
 
         .tag:hover {
             background: var(--accent);
             color: #fff;
-            box-shadow: 0 0 15px var(--glow-1);
+            box-shadow: 0 0 14px rgba(59, 109, 240, 0.2);
+            border-color: var(--accent);
         }
 
+        /* ===== 引用块 ===== */
+        .quote-block {
+            background: linear-gradient(135deg, #f6f8ff 0%, #fdfdff 100%);
+            border-left: 5px solid var(--accent);
+            border-radius: 0 10px 10px 0;
+            padding: 18px 22px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--text);
+            font-style: italic;
+            flex-shrink: 0;
+            box-shadow: inset 0 0 20px rgba(59, 109, 240, 0.04);
+            transition: all 0.3s ease;
+        }
+
+        .quote-block:hover {
+            box-shadow: inset 0 0 35px rgba(59, 109, 240, 0.08);
+            border-left-width: 7px;
+        }
+
+        .quote-block .quote-author {
+            font-style: normal;
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 6px;
+            font-weight: 400;
+        }
+
+        /* ===== 案例卡片 ===== */
         .case-card {
             background: #f9fafc;
-            border: 1px solid var(--border);
+            border: 1px solid #e8ecf2;
             border-radius: 14px;
             padding: 18px 20px;
             display: flex;
-            gap: 16px;
+            gap: 15px;
             flex-shrink: 0;
             transition: all 0.3s ease;
         }
 
         .case-card:hover {
             border-color: var(--accent);
-            box-shadow: 0 4px 20px var(--glow-1);
+            box-shadow: 0 4px 20px rgba(59, 109, 240, 0.1);
             transform: translateY(-2px);
         }
 
         .case-card .case-num {
             flex-shrink: 0;
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 10px;
-            background: var(--accent-light);
+            background: #eef3ff;
             color: var(--accent);
             font-weight: 700;
-            font-size: 18px;
+            font-size: 19px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -342,19 +489,20 @@
         }
 
         .case-card .case-content h4 {
-            font-size: 15px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
             color: var(--text);
-            margin: 0 0 4px;
+            margin: 0 0 5px;
         }
 
         .case-card .case-content p {
-            font-size: 13.5px;
+            font-size: 14px;
             color: var(--text-secondary);
-            line-height: 1.6;
+            line-height: 1.7;
             margin: 0;
         }
 
+        /* ===== 规则列表 ===== */
         .rule-list {
             list-style: none;
             display: grid;
@@ -366,16 +514,18 @@
             display: flex;
             align-items: flex-start;
             gap: 8px;
-            font-size: 14px;
+            font-size: 14.5px;
             color: var(--text-secondary);
-            line-height: 1.55;
-            padding: 8px;
+            line-height: 1.6;
+            padding: 9px 10px;
             border-radius: 10px;
             transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
 
         .rule-list li:hover {
-            background: var(--accent-light);
+            background: #f6f8ff;
+            border-color: #d6e0f8;
             transform: translateX(4px);
         }
 
@@ -385,8 +535,8 @@
             height: 8px;
             border-radius: 50%;
             background: var(--accent);
-            margin-top: 6px;
-            box-shadow: 0 0 10px var(--glow-1);
+            margin-top: 7px;
+            box-shadow: 0 0 8px rgba(59, 109, 240, 0.25);
             animation: pulseDot 2s ease-in-out infinite;
         }
 
@@ -394,14 +544,15 @@
 
             0%,
             100% {
-                box-shadow: 0 0 5px var(--glow-1);
+                box-shadow: 0 0 5px rgba(59, 109, 240, 0.2);
             }
 
             50% {
-                box-shadow: 0 0 15px var(--glow-1), 0 0 25px var(--glow-2);
+                box-shadow: 0 0 14px rgba(59, 109, 240, 0.35), 0 0 24px rgba(59, 109, 240, 0.15);
             }
         }
 
+        /* ===== 流程图 ===== */
         .flow-row {
             display: flex;
             align-items: center;
@@ -411,26 +562,27 @@
         }
 
         .flow-item {
-            background: var(--accent-light);
-            padding: 12px 20px;
+            background: #eef3ff;
+            padding: 14px 22px;
             border-radius: 10px;
-            font-weight: 600;
-            font-size: 14px;
+            font-weight: 700;
+            font-size: 15px;
             color: var(--accent);
             text-align: center;
             white-space: nowrap;
+            border: 1px solid #d6e0f8;
             transition: all 0.3s ease;
         }
 
         .flow-item:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px var(--glow-1);
+            box-shadow: 0 0 18px rgba(59, 109, 240, 0.15);
         }
 
         .flow-arrow {
-            font-size: 18px;
+            font-size: 20px;
             color: var(--accent);
-            opacity: 0.6;
+            opacity: 0.5;
             animation: arrowBounce 1.5s ease-in-out infinite;
         }
 
@@ -439,24 +591,25 @@
             0%,
             100% {
                 transform: translateX(0);
-                opacity: 0.6;
+                opacity: 0.5;
             }
 
             50% {
-                transform: translateX(5px);
+                transform: translateX(6px);
                 opacity: 1;
             }
         }
 
+        /* ===== 占位图片框 ===== */
         .placeholder-box {
-            border: 2px dashed #d0d8ee;
+            border: 2px dashed #dce3f0;
             border-radius: 12px;
-            background: #fafbff;
+            background: #fafbfd;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #a0a8c0;
-            font-size: 13px;
+            color: #8a90a8;
+            font-size: 14px;
             min-height: 100px;
             gap: 8px;
             flex-shrink: 0;
@@ -466,21 +619,17 @@
 
         .placeholder-box img {
             transition: all 0.4s ease;
+            border-radius: 6px;
         }
 
         .placeholder-box img:hover {
             transform: scale(1.03);
-            box-shadow: 0 0 25px var(--glow-1);
-        }
-
-        .placeholder-box .ph-icon {
-            font-size: 24px;
-            opacity: 0.6;
+            box-shadow: 0 0 24px rgba(59, 109, 240, 0.15);
         }
 
         .placeholder-row {
             display: flex;
-            gap: 16px;
+            gap: 14px;
             flex-shrink: 0;
         }
 
@@ -488,38 +637,11 @@
             flex: 1;
         }
 
-        .quote-block {
-            background: linear-gradient(135deg, #f0f4ff 0%, #fafcff 100%);
-            border-left: 4px solid var(--accent);
-            border-radius: 0 10px 10px 0;
-            padding: 16px 20px;
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text);
-            font-style: italic;
-            flex-shrink: 0;
-            box-shadow: 0 0 20px var(--glow-2) inset;
-            transition: all 0.3s ease;
-        }
-
-        .quote-block:hover {
-            box-shadow: 0 0 35px var(--glow-1) inset;
-            border-left-width: 6px;
-        }
-
-        .quote-block .quote-author {
-            font-style: normal;
-            font-size: 13px;
-            color: var(--text-secondary);
-            margin-top: 6px;
-            font-weight: 400;
-        }
-
-        /* 目录卡片样式 */
+        /* ===== 目录列表 ===== */
         .toc-list {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 9px;
         }
 
         .toc-item {
@@ -528,31 +650,31 @@
             gap: 14px;
             padding: 14px 18px;
             background: #f9fafc;
-            border: 1px solid var(--border);
+            border: 1px solid #e8ecf2;
             border-radius: 14px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.25s ease;
             text-decoration: none;
             color: var(--text);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
         }
 
         .toc-item:hover {
-            background: var(--accent-light);
+            background: #eef3ff;
             border-color: var(--accent);
-            box-shadow: 0 6px 20px var(--glow-1);
-            transform: translateX(4px);
+            box-shadow: 0 4px 18px rgba(59, 109, 240, 0.12);
+            transform: translateX(5px);
         }
 
         .toc-num {
             flex-shrink: 0;
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
             border-radius: 10px;
-            background: var(--accent-light);
+            background: #eef3ff;
             color: var(--accent);
             font-weight: 700;
-            font-size: 16px;
+            font-size: 17px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -562,40 +684,41 @@
         .toc-item:hover .toc-num {
             background: var(--accent);
             color: #fff;
-            box-shadow: 0 0 15px var(--glow-1);
+            box-shadow: 0 0 14px rgba(59, 109, 240, 0.2);
         }
 
         .toc-text {
-            font-size: 16px;
-            font-weight: 500;
+            font-size: 17px;
+            font-weight: 600;
             letter-spacing: 0.02em;
         }
 
+        /* ===== 导航点 ===== */
         .nav-dots {
             position: fixed;
-            right: 20px;
+            right: 18px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 10;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .nav-dot {
-            width: 10px;
-            height: 10px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
             background: #c8d0e0;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 0 6px transparent;
+            box-shadow: 0 0 4px transparent;
         }
 
         .nav-dot.active {
             background: var(--accent);
-            box-shadow: 0 0 14px var(--glow-1), 0 0 30px var(--glow-2);
-            transform: scale(1.3);
+            box-shadow: 0 0 16px rgba(59, 109, 240, 0.4), 0 0 32px rgba(59, 109, 240, 0.25);
+            transform: scale(1.4);
             animation: breatheGlow 2s ease-in-out infinite;
         }
 
@@ -603,17 +726,114 @@
 
             0%,
             100% {
-                box-shadow: 0 0 14px var(--glow-1), 0 0 30px var(--glow-2);
+                box-shadow: 0 0 16px rgba(59, 109, 240, 0.4), 0 0 32px rgba(59, 109, 240, 0.25);
             }
 
             50% {
-                box-shadow: 0 0 22px var(--glow-1), 0 0 45px var(--glow-2), 0 0 60px var(--glow-3);
+                box-shadow: 0 0 24px rgba(59, 109, 240, 0.55), 0 0 48px rgba(59, 109, 240, 0.35), 0 0 64px rgba(124, 58, 237, 0.15);
             }
         }
 
+        /* ===== 网格卡片（清朗行动等） ===== */
+        .grid-card {
+            background: #f9fafc;
+            padding: 16px 18px;
+            border-radius: 10px;
+            border: 1px solid #e8ecf2;
+            transition: all 0.3s ease;
+        }
+
+        .grid-card:hover {
+            background: #eef3ff;
+            box-shadow: 0 0 18px rgba(59, 109, 240, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--accent);
+        }
+
+        .grid-card strong {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .grid-card p {
+            font-size: 14px;
+            margin: 6px 0 0;
+            color: var(--text-secondary);
+        }
+
+        /* ===== 共治卡片 ===== */
+        .gov-card {
+            border: 1px solid #e8ecf2;
+            border-radius: 10px;
+            padding: 16px;
+            transition: all 0.3s ease;
+            background: #fafbfd;
+            font-size: 15px;
+        }
+
+        .gov-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 18px rgba(59, 109, 240, 0.1);
+        }
+
+        .gov-card strong {
+            color: var(--text);
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        /* ===== 法规卡片 ===== */
+        .law-card {
+            background: #f9fafc;
+            border: 1px solid #e8ecf2;
+            border-radius: 14px;
+            padding: 18px 20px;
+            display: flex;
+            gap: 15px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .law-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(59, 109, 240, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .law-card .law-num {
+            flex-shrink: 0;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .law-card .law-content {
+            flex: 1;
+        }
+
+        .law-card .law-content h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            margin: 0 0 5px;
+        }
+
+        .law-card .law-content p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        /* ===== 响应式 ===== */
         @media (max-width: 768px) {
             .card {
-                padding: 28px 22px 24px;
+                padding: 26px 20px 22px;
                 border-radius: 16px;
                 max-height: 92vh;
             }
@@ -622,8 +842,24 @@
                 font-size: 22px;
             }
 
+            .card-body {
+                font-size: 15px;
+            }
+
+            .case-card .case-content h4 {
+                font-size: 14px;
+            }
+
+            .case-card .case-content p {
+                font-size: 13px;
+            }
+
             .rule-list {
                 grid-template-columns: 1fr;
+            }
+
+            .rule-list li {
+                font-size: 13px;
             }
 
             .flow-row {
@@ -640,7 +876,7 @@
             }
 
             .nav-dots {
-                right: 8px;
+                right: 6px;
                 gap: 8px;
             }
 
@@ -650,7 +886,25 @@
             }
 
             .toc-item {
-                padding: 12px 14px;
+                padding: 11px 13px;
+            }
+
+            .toc-text {
+                font-size: 15px;
+            }
+
+            .slide {
+                padding: 18px 16px;
+            }
+
+            .grid-card strong,
+            .gov-card strong {
+                font-size: 14px;
+            }
+
+            .grid-card p,
+            .gov-card {
+                font-size: 13px;
             }
         }
     </style>
@@ -661,11 +915,16 @@
     <!-- 粒子画布 -->
     <canvas id="particleCanvas"></canvas>
 
+    <!-- 光球装饰 -->
     <div class="glow-bg">
         <div class="glow-orb"></div>
         <div class="glow-orb"></div>
         <div class="glow-orb"></div>
     </div>
+
+    <!-- 几何装饰 -->
+    <div class="deco-square" style="width:55px;height:55px;border-color:#e53e3e;top:12%;left:6%;"></div>
+    <div class="deco-square" style="width:38px;height:38px;border-color:#0d9488;bottom:18%;right:8%;"></div>
 
     <nav class="nav-dots" id="navDots"></nav>
 
@@ -674,8 +933,8 @@
         <!-- ===== 幻灯片 1: 封面 ===== -->
         <section class="slide" id="slide-1">
             <div class="card" style="text-align:center;justify-content:center;align-items:center;gap:16px;">
-                <div style="font-size:48px;margin-bottom:8px;">🌐</div>
-                <h1 style="font-size:36px;font-weight:800;letter-spacing:0.03em;color:#1a1a2e;">
+                <div class="lc lc-56 c-accent" style="margin-bottom:6px;"><i data-lucide="globe"></i></div>
+                <h1 style="font-size:38px;font-weight:800;letter-spacing:0.04em;color:#1a1a2e;">
                     <span class="typing-text" id="typingTitle"></span>
                 </h1>
                 <p style="font-size:18px;color:var(--text-secondary);margin:0;">自媒体规范与网络空间治理</p>
@@ -684,16 +943,21 @@
                     <span class="tag">思政·习概</span>
                     <span class="tag">网络法治</span>
                 </div>
-                <p style="font-size:24px;color:#a0a8c0;margin-top:20px;">演讲: xxx</p>
+                <p style="font-size:21px;color:#8a90a8;margin-top:18px;">演讲: xxx</p>
             </div>
         </section>
 
         <!-- ===== 幻灯片 2: 目录 ===== -->
         <section class="slide" id="slide-2">
             <div class="card">
-                <div class="card-title"><span class="icon">📋</span> 目 录</div>
+                <div class="card-title">
+                    <span class="icon-badge"><span class="lc lc-24 c-accent"><i
+                                data-lucide="clipboard-list"></i></span></span>
+                    目 录
+                </div>
                 <div class="card-body">
-                    <p style="margin-bottom:6px;">本次展示将围绕以下六大板块展开，点击标题可快速跳转：</p>
+                    <p style="margin-bottom:6px;color:var(--text-secondary);font-size:16px;">本次展示将围绕以下六大板块展开，点击标题可快速跳转：
+                    </p>
                     <div class="toc-list">
                         <div class="toc-item" data-target="2">
                             <div class="toc-num">01</div>
@@ -720,7 +984,6 @@
                             <div class="toc-text">多方共治：构建清朗网络空间</div>
                         </div>
                     </div>
-                    <p style="font-size:13px;color:#a0a8c0;margin-top:8px;"></p>
                 </div>
             </div>
         </section>
@@ -728,7 +991,10 @@
         <!-- ===== 幻灯片 3: 核心命题 ===== -->
         <section class="slide" id="slide-3">
             <div class="card">
-                <div class="card-title"><span class="icon">📌</span> 一、核心命题：为何"互联网不是法外之地"？</div>
+                <div class="card-title">
+                    <span class="icon-badge"><span class="lc lc-24 c-accent"><i data-lucide="pin"></i></span></span>
+                    一、核心命题：为何"互联网不是法外之地"？
+                </div>
                 <div class="card-body">
                     <p>习近平总书记多次强调：<strong>"网络空间不是'法外之地'"</strong>。这一重要论述深刻揭示了网络空间与实体社会的本质关系——网络空间虽然是虚拟的，但使用网络的主体是<strong>现实社会中的真实个人与组织</strong>，因此同样必须遵守法律法规。
                     </p>
@@ -741,11 +1007,11 @@
                     <div class="placeholder-row">
                         <div class="placeholder-box" style="min-height:80px;">
                             <img src="./data/img_01.png" alt="案例截图"
-                                style="width:100%; max-width:500px; border-radius:8px;">
+                                style="width:100%;max-width:500px;border-radius:8px;">
                         </div>
                         <div class="placeholder-box" style="min-height:80px;">
                             <img src="./data/img_02.png" alt="案例截图"
-                                style="width:100%; max-width:500px; border-radius:8px;">
+                                style="width:100%;max-width:500px;border-radius:8px;">
                         </div>
                     </div>
                 </div>
@@ -755,7 +1021,10 @@
         <!-- ===== 幻灯片 4: 案例回放 ===== -->
         <section class="slide" id="slide-4">
             <div class="card">
-                <div class="card-title"><span class="icon">⚖️</span> 二、案例回放：流量背后的代价</div>
+                <div class="card-title">
+                    <span class="icon-badge"><span class="lc lc-24 c-rose"><i data-lucide="scale"></i></span></span>
+                    二、案例回放：流量背后的代价
+                </div>
                 <div class="card-body">
                     <div class="case-card">
                         <div class="case-num">1</div>
@@ -780,10 +1049,10 @@
                             </p>
                         </div>
                     </div>
-                    <div class="placeholder-box" style="min-height:70px; flex-direction: column;">
-                        <img src="./data/img_03.png" alt="案例截图" style="width:100%; max-width:600px; border-radius:8px;">
-                        <img src="./data/img_04.png" alt="案例截图" style="width:100%; max-width:600px; border-radius:8px;">
-                        <img src="./data/img_05.png" alt="案例截图" style="width:100%; max-width:600px; border-radius:8px;">
+                    <div class="placeholder-box" style="min-height:70px;flex-direction:column;">
+                        <img src="./data/img_03.png" alt="案例截图" style="width:100%;max-width:600px;border-radius:8px;">
+                        <img src="./data/img_04.png" alt="案例截图" style="width:100%;max-width:600px;border-radius:8px;">
+                        <img src="./data/img_05.png" alt="案例截图" style="width:100%;max-width:600px;border-radius:8px;">
                     </div>
                 </div>
             </div>
@@ -792,7 +1061,10 @@
         <!-- ===== 幻灯片 5: 乱象透视 ===== -->
         <section class="slide" id="slide-5">
             <div class="card">
-                <div class="card-title"><span class="icon">🔍</span> 三、乱象透视：自媒体"七宗罪"</div>
+                <div class="card-title">
+                    <span class="icon-badge"><span class="lc lc-24 c-orange"><i data-lucide="search"></i></span></span>
+                    三、乱象透视：自媒体"七宗罪"
+                </div>
                 <div class="card-body">
                     <p>当前自媒体领域存在的主要乱象，可归纳为以下七类突出问题：</p>
                     <ul class="rule-list">
@@ -807,7 +1079,7 @@
                     <div class="placeholder-row">
                         <div class="placeholder-box" style="min-height:80px;">
                             <img src="./data/img_06.png" alt="案例截图"
-                                style="width:100%; max-width:500px; border-radius:8px;">
+                                style="width:100%;max-width:500px;border-radius:8px;">
                         </div>
                     </div>
                 </div>
@@ -817,35 +1089,41 @@
         <!-- ===== 幻灯片 6: 法律法规 ===== -->
         <section class="slide" id="slide-6">
             <div class="card">
-                <div class="card-title"><span class="icon">📜</span> 四、制度回眸：法律法规如何织密"安全网"？</div>
+                <div class="card-title">
+                    <span class="icon-badge"><span class="lc lc-24 c-purple"><i
+                                data-lucide="scroll-text"></i></span></span>
+                    四、制度回眸：法律法规如何织密"安全网"？
+                </div>
                 <div class="card-body">
                     <p>我国已构建起<strong>多层次、全覆盖</strong>的网络空间治理法律法规体系：</p>
                     <div style="display:flex;flex-direction:column;gap:10px;">
-                        <div class="case-card">
-                            <div class="case-num" style="background:#e8f0ff;">📘</div>
-                            <div class="case-content">
+                        <div class="law-card">
+                            <div class="law-num" style="background:#eff4ff;"><span class="lc lc-24 c-blue"><i
+                                        data-lucide="book-open"></i></span></div>
+                            <div class="law-content">
                                 <h4>《中华人民共和国网络安全法》</h4>
                                 <p>网络空间治理的<strong>基本法</strong>，确立网络实名制、个人信息保护等核心制度。</p>
                             </div>
                         </div>
-                        <div class="case-card">
-                            <div class="case-num" style="background:#e8f0ff;">📗</div>
-                            <div class="case-content">
+                        <div class="law-card">
+                            <div class="law-num" style="background:#edfaf7;"><span class="lc lc-24 c-teal"><i
+                                        data-lucide="file-text"></i></span></div>
+                            <div class="law-content">
                                 <h4>《网络信息内容生态治理规定》</h4>
                                 <p>明确鼓励7类信息、禁止11类信息，建立<strong>政府+企业+社会+网民</strong>多方共治机制。</p>
                             </div>
                         </div>
-                        <div class="case-card">
-                            <div class="case-num" style="background:#e8f0ff;">📙</div>
-                            <div class="case-content">
+                        <div class="law-card">
+                            <div class="law-num" style="background:#f5f0ff;"><span class="lc lc-24 c-purple"><i
+                                        data-lucide="file-warning"></i></span></div>
+                            <div class="law-content">
                                 <h4>《关于规范网络名人账号行为管理的通知》（2025年12月）</h4>
                                 <p>制定<strong>13类负面行为清单</strong>，包括传播低俗内容、鼓动群体对立、"开盒挂人"、无资质运营等，为网络名人划出清晰"红线"。</p>
                             </div>
                         </div>
                     </div>
                     <div class="placeholder-box" style="min-height:70px;">
-                        <img src="./data/img_07.png" alt="案例截图"
-                            style="width:100%; max-width:1000px; border-radius:8px;">
+                        <img src="./data/img_07.png" alt="案例截图" style="width:100%;max-width:1000px;border-radius:8px;">
                     </div>
                 </div>
             </div>
@@ -854,41 +1132,41 @@
         <!-- ===== 幻灯片 7: 清朗行动 ===== -->
         <section class="slide" id="slide-7">
             <div class="card">
-                <div class="card-title"><span class="icon">🛡️</span> 五、治理行动："清朗"出击，净化网络生态</div>
+                <div class="card-title">
+                    <span class="icon-badge"><span class="lc lc-24 c-teal"><i data-lucide="shield"></i></span></span>
+                    五、治理行动："清朗"出击，净化网络生态
+                </div>
                 <div class="card-body">
                     <p>中央网信办持续开展<strong>"清朗"系列专项行动</strong>，以雷霆手段整治网络乱象：</p>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-                        <div style="background:#f6f8ff;padding:14px 16px;border-radius:10px;transition: all 0.3s ease;"
-                            onmouseover="this.style.background='#e8eeff';this.style.boxShadow='0 0 20px var(--glow-1)';this.style.transform='translateY(-2px)';this.style.borderColor='var(--accent)';"
-                            onmouseout="this.style.background='#f6f8ff';this.style.boxShadow='none';this.style.transform='translateY(0)';this.style.borderColor='transparent';">
-                            <strong>📌 2025年"清朗·整治自媒体发布不实信息"专项行动</strong>
-                            <p style="font-size:13px;margin:6px 0 0;">
-                                聚焦4类突出问题：恶意蹭炒误导公众、多种手段歪曲事实、不做标注以假乱真、专业领域信息不实。<br>北京一地即处置违法违规信息<strong>174.2万余条</strong>，账号<strong>5.7万余个</strong>。
+                        <div class="grid-card">
+                            <strong><span class="lc lc-18 c-accent"
+                                    style="display:inline-flex;vertical-align:middle;"><i
+                                        data-lucide="target"></i></span> 2025年"清朗·整治自媒体发布不实信息"专项行动</strong>
+                            <p>聚焦4类突出问题：恶意蹭炒误导公众、多种手段歪曲事实、不做标注以假乱真、专业领域信息不实。<br>北京一地即处置违法违规信息<strong>174.2万余条</strong>，账号<strong>5.7万余个</strong>。
                             </p>
                         </div>
-                        <div style="background:#f6f8ff;padding:14px 16px;border-radius:10px;transition: all 0.3s ease;"
-                            onmouseover="this.style.background='#e8eeff';this.style.boxShadow='0 0 20px var(--glow-1)';this.style.transform='translateY(-2px)';this.style.borderColor='var(--accent)';"
-                            onmouseout="this.style.background='#f6f8ff';this.style.boxShadow='none';this.style.transform='translateY(0)';this.style.borderColor='transparent';">
-                            <strong>📌 2026年"清朗·营造春节网络环境"专项行动</strong>
-                            <p style="font-size:13px;margin:6px 0 0;">
-                                集中整治AI生成"数字泔水"、恶意挑动负面情绪、炮制不实信息等问题，依法处置账号<strong>3.9万余个</strong>。</p>
+                        <div class="grid-card">
+                            <strong><span class="lc lc-18 c-accent"
+                                    style="display:inline-flex;vertical-align:middle;"><i
+                                        data-lucide="target"></i></span> 2026年"清朗·营造春节网络环境"专项行动</strong>
+                            <p>集中整治AI生成"数字泔水"、恶意挑动负面情绪、炮制不实信息等问题，依法处置账号<strong>3.9万余个</strong>。</p>
                         </div>
-                        <div style="background:#f6f8ff;padding:14px 16px;border-radius:10px;transition: all 0.3s ease;"
-                            onmouseover="this.style.background='#e8eeff';this.style.boxShadow='0 0 20px var(--glow-1)';this.style.transform='translateY(-2px)';this.style.borderColor='var(--accent)';"
-                            onmouseout="this.style.background='#f6f8ff';this.style.boxShadow='none';this.style.transform='translateY(0)';this.style.borderColor='transparent';">
-                            <strong>📌 2026年"清朗辽河"专项行动</strong>
-                            <p style="font-size:13px;margin:6px 0 0;">聚焦涉辽自媒体违规问题，整治恶意蹭炒误导公众，省自媒体协会发布共建清朗网络倡议。</p>
+                        <div class="grid-card">
+                            <strong><span class="lc lc-18 c-accent"
+                                    style="display:inline-flex;vertical-align:middle;"><i
+                                        data-lucide="target"></i></span> 2026年"清朗辽河"专项行动</strong>
+                            <p>聚焦涉辽自媒体违规问题，整治恶意蹭炒误导公众，省自媒体协会发布共建清朗网络倡议。</p>
                         </div>
-                        <div style="background:#f6f8ff;padding:14px 16px;border-radius:10px;transition: all 0.3s ease;"
-                            onmouseover="this.style.background='#e8eeff';this.style.boxShadow='0 0 20px var(--glow-1)';this.style.transform='translateY(-2px)';this.style.borderColor='var(--accent)';"
-                            onmouseout="this.style.background='#f6f8ff';this.style.boxShadow='none';this.style.transform='translateY(0)';this.style.borderColor='transparent';">
-                            <strong>📌 地方典型案例</strong>
-                            <p style="font-size:13px;margin:6px 0 0;">河南周口通报：网民歪曲事实、冒用官方名义、编造虚假游行信息等均被依法行政处罚或行政拘留。</p>
+                        <div class="grid-card">
+                            <strong><span class="lc lc-18 c-accent"
+                                    style="display:inline-flex;vertical-align:middle;"><i
+                                        data-lucide="target"></i></span> 地方典型案例</strong>
+                            <p>河南周口通报：网民歪曲事实、冒用官方名义、编造虚假游行信息等均被依法行政处罚或行政拘留。</p>
                         </div>
                     </div>
                     <div class="placeholder-box" style="min-height:70px;">
-                        <img src="./data/img_08.png" alt="案例截图"
-                            style="width:100%; max-width:1000px; border-radius:8px;">
+                        <img src="./data/img_08.png" alt="案例截图" style="width:100%;max-width:1000px;border-radius:8px;">
                     </div>
                 </div>
             </div>
@@ -897,40 +1175,54 @@
         <!-- ===== 幻灯片 8: 多方共治 ===== -->
         <section class="slide" id="slide-8">
             <div class="card">
-                <div class="card-title"><span class="icon">🤝</span> 六、多方共治：构建清朗网络空间</div>
+                <div class="card-title">
+                    <span class="icon-badge"><span class="lc lc-24 c-accent2"><i
+                                data-lucide="handshake"></i></span></span>
+                    六、多方共治：构建清朗网络空间
+                </div>
                 <div class="card-body">
                     <p>规范自媒体行业、发挥其引导健康价值观和社会舆论风气的作用，需要<strong>四方协同发力</strong>：</p>
                     <div class="flow-row">
-                        <div class="flow-item">🏛️ 政府<br><span style="font-size:12px;font-weight:400;">立法与执法</span>
-                        </div>
+                        <div class="flow-item"><span class="lc lc-20"
+                                style="display:inline-flex;vertical-align:middle;margin-right:4px;"><i
+                                    data-lucide="building-2"></i></span> 政府<br><span
+                                style="font-size:12px;font-weight:400;">立法与执法</span></div>
                         <span class="flow-arrow">→</span>
-                        <div class="flow-item">🏢 平台<br><span style="font-size:12px;font-weight:400;">审核与管理</span></div>
+                        <div class="flow-item"><span class="lc lc-20"
+                                style="display:inline-flex;vertical-align:middle;margin-right:4px;"><i
+                                    data-lucide="building"></i></span> 平台<br><span
+                                style="font-size:12px;font-weight:400;">审核与管理</span></div>
                         <span class="flow-arrow">→</span>
-                        <div class="flow-item">🎤 自媒体<br><span style="font-size:12px;font-weight:400;">自律与责任</span>
-                        </div>
+                        <div class="flow-item"><span class="lc lc-20"
+                                style="display:inline-flex;vertical-align:middle;margin-right:4px;"><i
+                                    data-lucide="mic"></i></span> 自媒体<br><span
+                                style="font-size:12px;font-weight:400;">自律与责任</span></div>
                         <span class="flow-arrow">→</span>
-                        <div class="flow-item">👥 网民<br><span style="font-size:12px;font-weight:400;">监督与素养</span></div>
+                        <div class="flow-item"><span class="lc lc-20"
+                                style="display:inline-flex;vertical-align:middle;margin-right:4px;"><i
+                                    data-lucide="users"></i></span> 网民<br><span
+                                style="font-size:12px;font-weight:400;">监督与素养</span></div>
                     </div>
                     <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-                        <div style="border:1px solid var(--border);border-radius:10px;padding:14px;transition: all 0.3s ease;"
-                            onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 20px var(--glow-1)';"
-                            onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none';">
-                            <strong>🏛️ 政府：</strong> 完善立法，健全源头标注、资质认证等机制，加大执法惩处力度，做好价值观引导。
+                        <div class="gov-card">
+                            <strong><span class="lc lc-20 c-accent"
+                                    style="display:inline-flex;vertical-align:middle;"><i
+                                        data-lucide="building-2"></i></span> 政府：</strong>
+                            完善立法，健全源头标注、资质认证等机制，加大执法惩处力度，做好价值观引导。
                         </div>
-                        <div style="border:1px solid var(--border);border-radius:10px;padding:14px;transition: all 0.3s ease;"
-                            onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 20px var(--glow-1)';"
-                            onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none';">
-                            <strong>🏢 平台：</strong> 落实主体责任，优化AI识别、信息标注、算法推荐等机制，把好"第一道关口"。
+                        <div class="gov-card">
+                            <strong><span class="lc lc-20 c-accent"
+                                    style="display:inline-flex;vertical-align:middle;"><i
+                                        data-lucide="building"></i></span> 平台：</strong>
+                            落实主体责任，优化AI识别、信息标注、算法推荐等机制，把好"第一道关口"。
                         </div>
-                        <div style="border:1px solid var(--border);border-radius:10px;padding:14px;transition: all 0.3s ease;"
-                            onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 20px var(--glow-1)';"
-                            onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none';">
-                            <strong>🎤 自媒体：</strong> 摒弃"流量至上"思维，坚守法律与道德底线，用影响力传播正能量。
+                        <div class="gov-card">
+                            <strong><span class="lc lc-20 c-rose" style="display:inline-flex;vertical-align:middle;"><i
+                                        data-lucide="mic"></i></span> 自媒体：</strong> 摒弃"流量至上"思维，坚守法律与道德底线，用影响力传播正能量。
                         </div>
-                        <div style="border:1px solid var(--border);border-radius:10px;padding:14px;transition: all 0.3s ease;"
-                            onmouseover="this.style.borderColor='var(--accent)';this.style.boxShadow='0 0 20px var(--glow-1)';"
-                            onmouseout="this.style.borderColor='var(--border)';this.style.boxShadow='none';">
-                            <strong>👥 网民：</strong> 提升媒介素养和法律意识，不造谣、不信谣、不传谣，积极举报违法违规信息。
+                        <div class="gov-card">
+                            <strong><span class="lc lc-20 c-teal" style="display:inline-flex;vertical-align:middle;"><i
+                                        data-lucide="users"></i></span> 网民：</strong> 提升媒介素养和法律意识，不造谣、不信谣、不传谣，积极举报违法违规信息。
                         </div>
                     </div>
                 </div>
@@ -940,7 +1232,11 @@
         <!-- ===== 幻灯片 9: 总结 ===== -->
         <section class="slide" id="slide-9">
             <div class="card">
-                <div class="card-title"><span class="icon">💡</span> 总结与展望</div>
+                <div class="card-title">
+                    <span class="icon-badge"><span class="lc lc-24 c-orange"><i
+                                data-lucide="lightbulb"></i></span></span>
+                    总结与展望
+                </div>
                 <div class="card-body">
                     <p>回顾本次学习，我们深刻认识到：</p>
                     <div style="display:flex;flex-direction:column;gap:12px;">
@@ -966,8 +1262,12 @@
                             </div>
                         </div>
                     </div>
-                    <p style="text-align:center;font-weight:600;font-size:16px;color:var(--accent);margin-top:8px;">
-                        清朗网络空间，人人共建，人人共享。🌐✨</p>
+                    <p style="text-align:center;font-weight:700;font-size:17px;color:var(--accent);margin-top:8px;">
+                        <span class="lc lc-22 c-accent" style="display:inline-flex;vertical-align:middle;"><i
+                                data-lucide="globe"></i></span> 清朗网络空间，人人共建，人人共享。
+                        <span class="lc lc-22 c-accent" style="display:inline-flex;vertical-align:middle;"><i
+                                data-lucide="sparkles"></i></span>
+                    </p>
                 </div>
             </div>
         </section>
@@ -975,8 +1275,8 @@
         <!-- ===== 幻灯片 10: 感谢观看 ===== -->
         <section class="slide" id="slide-10">
             <div class="card" style="text-align:center;justify-content:center;align-items:center;gap:12px;">
-                <div style="font-size:56px;">🙏</div>
-                <h2 style="font-size:34px;font-weight:800;letter-spacing:0.04em;color:#1a1a2e;">感谢观看</h2>
+                <div class="lc lc-56 c-rose"><i data-lucide="heart"></i></div>
+                <h2 style="font-size:36px;font-weight:800;letter-spacing:0.05em;color:#1a1a2e;">感谢观看</h2>
                 <p style="font-size:16px;color:var(--text-secondary);">互联网不是法外之地 · 共建清朗网络空间</p>
                 <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
                     <span class="tag">网络法治</span>
@@ -984,7 +1284,7 @@
                     <span class="tag">清朗行动</span>
                     <span class="tag">共建共治</span>
                 </div>
-                <p style="font-size:12px;color:#c0c8d8;margin-top:16px;">本演示内容仅供学习交流使用 · 案例信息来源：最高人民法院、中央网信办、各级法院公开报道
+                <p style="font-size:12px;color:#8a90a8;margin-top:16px;">本演示内容仅供学习交流使用 · 案例信息来源：最高人民法院、中央网信办、各级法院公开报道
                 </p>
             </div>
         </section>
@@ -992,6 +1292,9 @@
 
     <script>
         (function () {
+            // ========== 初始化 Lucide 图标 ==========
+            lucide.createIcons();
+
             // ========== 粒子追踪动画 ==========
             const canvas = document.getElementById('particleCanvas');
             const ctx = canvas.getContext('2d');
@@ -1013,30 +1316,27 @@
                 reset() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
-                    this.size = Math.random() * 2.5 + 0.8;
-                    this.speedX = (Math.random() - 0.5) * 0.4;
-                    this.speedY = (Math.random() - 0.5) * 0.4;
-                    this.opacity = Math.random() * 0.5 + 0.2;
+                    this.size = Math.random() * 2 + 0.6;
+                    this.speedX = (Math.random() - 0.5) * 0.3;
+                    this.speedY = (Math.random() - 0.5) * 0.3;
+                    this.opacity = Math.random() * 0.35 + 0.12;
                 }
                 update() {
                     this.x += this.speedX;
                     this.y += this.speedY;
-                    // 鼠标吸引
                     const dx = mouse.x - this.x;
                     const dy = mouse.y - this.y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < 200) {
-                        const force = (200 - dist) / 200 * 0.025;
-                        this.speedX += dx * force * 0.02;
-                        this.speedY += dy * force * 0.02;
-                        this.opacity = Math.min(0.9, this.opacity + 0.02);
+                        const force = (200 - dist) / 200 * 0.018;
+                        this.speedX += dx * force * 0.015;
+                        this.speedY += dy * force * 0.015;
+                        this.opacity = Math.min(0.7, this.opacity + 0.014);
                     } else {
-                        this.opacity = Math.max(0.2, this.opacity - 0.005);
+                        this.opacity = Math.max(0.12, this.opacity - 0.003);
                     }
-                    // 边界回弹
                     if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
                     if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
-                    // 速度阻尼
                     this.speedX *= 0.998;
                     this.speedY *= 0.998;
                 }
@@ -1044,8 +1344,8 @@
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                     ctx.fillStyle = `rgba(59,109,240,${this.opacity})`;
-                    ctx.shadowColor = `rgba(59,109,240,${this.opacity * 0.8})`;
-                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = `rgba(59,109,240,${this.opacity * 0.6})`;
+                    ctx.shadowBlur = 6;
                     ctx.fill();
                 }
             }
@@ -1056,7 +1356,7 @@
                     particles.push(new Particle());
                 }
             }
-            createParticles(60);
+            createParticles(50);
 
             function animateParticles() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -1064,7 +1364,6 @@
                     p.update();
                     p.draw();
                 });
-                // 绘制连线
                 particles.forEach((p1, i) => {
                     particles.slice(i + 1).forEach(p2 => {
                         const dx = p1.x - p2.x;
@@ -1074,8 +1373,8 @@
                             ctx.beginPath();
                             ctx.moveTo(p1.x, p1.y);
                             ctx.lineTo(p2.x, p2.y);
-                            ctx.strokeStyle = `rgba(59,109,240,${0.1 * (1 - dist / 120)})`;
-                            ctx.lineWidth = 0.5;
+                            ctx.strokeStyle = `rgba(59,109,240,${0.06 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 0.4;
                             ctx.stroke();
                         }
                     });
@@ -1097,18 +1396,17 @@
             const typingElement = document.getElementById('typingTitle');
             const fullText = '互联网不是法外之地';
             let charIndex = 0;
+
             function typeWriter() {
                 if (charIndex < fullText.length) {
                     typingElement.textContent += fullText.charAt(charIndex);
                     charIndex++;
                     setTimeout(typeWriter, 100);
                 } else {
-                    // 打字完成，移除光标类
                     typingElement.classList.remove('typing-text');
                     typingElement.style.borderRight = 'none';
                 }
             }
-            // 封面可见时启动打字
             const coverObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && charIndex === 0) {
@@ -1120,14 +1418,14 @@
             const slide1 = document.getElementById('slide-1');
             if (slide1) coverObserver.observe(slide1);
 
-            // ========== 卡片入场动画（逐张可见性检测） ==========
+            // ========== 卡片入场动画 ==========
             const cardObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
                     }
                 });
-            }, { threshold: 0.3 });
+            }, { threshold: 0.25 });
             document.querySelectorAll('.card').forEach(card => {
                 cardObserver.observe(card);
             });
